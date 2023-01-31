@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/ClickableSprite.cs" type="Script" id=1]
+[ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
+
+[node name="ClickableSprite" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
