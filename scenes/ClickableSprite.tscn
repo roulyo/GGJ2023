@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/ClickableSprite.cs" type="Script" id=1]
+[ext_resource path="res://scripts/Sprite2D.cs" type="Script" id=1]
 [ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
+[ext_resource path="res://scenes/MiniGame.tscn" type="PackedScene" id=3]
 
 [node name="ClickableSprite" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite" parent="."]
+position = Vector2( 475, 291 )
+scale = Vector2( 0.809963, 0.798351 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+MiniGame = ExtResource( 3 )
