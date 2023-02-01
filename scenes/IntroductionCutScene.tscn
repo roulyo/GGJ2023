@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sounds/PhoneKeyboard.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/PeaBerry-Mono.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/IntroductionCutScene.cs" type="Script" id=3]
+
+[node name="IntroductionCutScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Introduction" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.0
+margin_top = -141.0
+margin_right = 212.0
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 2 )
+text = "After an eventful Christmas family dinner you discover that your sibling took a DNA Genetic Testing to discover their roots. Drive by curiosity, you find yourself sneaking into their room…
+
+
+In the room of your sibling, you find the result of the test to be locked by a password/passcode. Knowing how forgetful they can be, you are sure that you'll find clues to the password by snooping around. Resolve puzzles and mini-games and find the password/passcode!
+"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="Introduction"]
+
+[node name="TypingAudio" type="AudioStreamPlayer" parent="Introduction"]
+stream = ExtResource( 1 )
+autoplay = true
+
+[connection signal="tween_all_completed" from="Introduction/Tween" to="Introduction" method="OnTweenTweenAllCompleted"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/StartScene.cs" type="Script" id=2]
+
+[node name="StartScene" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00784314, 0, 0.00784314, 1 )
+
+[node name="TitleLabel" type="Label" parent="Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_right = -518.0
+margin_bottom = 7.0
+rect_scale = Vector2( 2, 2 )
+text = "For20AndMe"
+align = 1
+uppercase = true
+
+[node name="StartButton" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.5
+margin_top = -66.0
+margin_right = 83.5
+text = "Press to start."
+
+[connection signal="pressed" from="Control/StartButton" to="." method="OnStartButtonPressed"]

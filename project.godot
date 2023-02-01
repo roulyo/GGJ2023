@@ -11,9 +11,13 @@ config_version=4
 [application]
 
 config/name="GGJ De l'Amour"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/StartScene.tscn"
 boot_splash/image="res://assets/Background_SplashScreen.png"
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneChanger="*res://scenes/SceneChanger.tscn"
 
 [display]
 
