@@ -4,23 +4,18 @@
 
 [node name="MiniGame" type="Node2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -300.0
-margin_right = 300.0
-margin_bottom = 300.0
+margin_right = 600.0
+margin_bottom = 400.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="MiniGameHUD" type="Control" parent="."]
-margin_left = -300.0
-margin_top = -300.0
-margin_right = 300.0
-margin_bottom = 300.0
+margin_right = 600.0
+margin_bottom = 400.0
 mouse_filter = 2
 
 [node name="Message" type="Label" parent="MiniGameHUD"]
@@ -39,17 +34,19 @@ valign = 1
 uppercase = true
 
 [node name="StartButton" type="Button" parent="MiniGameHUD"]
-margin_left = 114.0
-margin_top = 516.0
-margin_right = 220.0
-margin_bottom = 556.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -110.0
+margin_right = 222.0
 text = "Play the game!"
 
 [node name="CloseButton" type="Button" parent="MiniGameHUD"]
-margin_left = 379.0
-margin_top = 518.0
-margin_right = 494.0
-margin_bottom = 558.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -219.0
+margin_top = -109.0
 text = "Close the game."
 
 [node name="WinButton" type="Button" parent="MiniGameHUD"]

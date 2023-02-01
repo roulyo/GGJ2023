@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/ObjectOfInterest.cs" type="Script" id=1]
 [ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
+[ext_resource path="res://scenes/MiniGame.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -19,5 +20,8 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 15, -158, 37, -167, 79, -166, 80, -154, 88, -144, 122, -154, 137, -139, 126, -106, 135, -84, 134, -60, 123, -34, 135, -18, 131, 5, 111, -7, 89, -1, 77, 4, 81, 18, 96, 19, 108, 30, 111, 39, 110, 66, 97, 76, 74, 76, 66, 81, 41, 156, 12, 164, -19, 154, -45, 91, -41, 71, -55, 72, -69, 64, -101, 51, -105, 35, -115, 25, -119, 0, -112, -24, -96, -52, -106, -67, -76, -114, -74, -145, -69, -124, -31, -141, -28, -118 )
 
-[connection signal="mouse_entered" from="." to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Area2D_mouse_exited"]
+[node name="MiniGame" parent="." instance=ExtResource( 3 )]
+
+[connection signal="mouse_entered" from="." to="." method="OnArea2DMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnArea2DMouseExited"]
+[connection signal="CloseGame" from="MiniGame" to="." method="CloseMiniGame"]
