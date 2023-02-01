@@ -37,5 +37,9 @@ margin_top = -28.0
 margin_bottom = 28.0
 text = ">"
 
-[connection signal="pressed" from="Control/GoToLeftButton" to="." method="_on_GoToLeftButton_pressed"]
-[connection signal="pressed" from="Control/GoToRightButton" to="." method="_on_GoToRightButton_pressed"]
+[connection signal="MiniGameEnded" from="Room_Right" to="." method="OnMiniGameEnded"]
+[connection signal="MiniGameStarted" from="Room_Right" to="." method="OnMiniGameStarted"]
+[connection signal="MiniGameEnded" from="Room_Left" to="." method="OnMiniGameEnded"]
+[connection signal="MiniGameStarted" from="Room_Left" to="." method="OnMiniGameStarted"]
+[connection signal="pressed" from="Control/GoToLeftButton" to="." method="OnGoToLeftButtonPressed"]
+[connection signal="pressed" from="Control/GoToRightButton" to="." method="OnGoToRightButtonPressed"]
