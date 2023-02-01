@@ -12,7 +12,7 @@ public class ObjectOfInterest : Area2D
 //-----------------------------------------------------------------------------
     public override void _Input(InputEvent inputEvent)
     {
-        if (!Visible)
+        if (!(GetParent() as CanvasItem).Visible)
             return;
 
         if(inputEvent is InputEventMouseButton)
