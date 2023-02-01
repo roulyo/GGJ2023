@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Sprite2D.cs" type="Script" id=1]
+[ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
+[ext_resource path="res://scenes/MiniGame.tscn" type="PackedScene" id=3]
+
+[node name="ClickableSprite" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite" parent="."]
+position = Vector2( 475, 291 )
+scale = Vector2( 0.809963, 0.798351 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="MiniGame" parent="Sprite2D" instance=ExtResource( 3 )]
+scale = Vector2( 1, 1 )
+
+[connection signal="CloseGame" from="Sprite2D/MiniGame" to="Sprite2D" method="CloseMiniGame"]
