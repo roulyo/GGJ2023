@@ -33,6 +33,9 @@ public class Main : Node2D
 //-----------------------------------------------------------------------------
     public override void _Process(float delta)
     {
+        if (Input.IsActionPressed("ui_cancel"))
+            GetTree().Quit();
+
         if (_switching)
         {
             UpdateRoomSwitch(delta);
@@ -92,15 +95,27 @@ public class Main : Node2D
     }
 
 //-----------------------------------------------------------------------------
-    private void _on_GoToLeftButton_pressed()
+    private void OnGoToLeftButtonPressed()
     {
         GoToRoom(Direction.Left);
     }
 
 //-----------------------------------------------------------------------------
-    private void _on_GoToRightButton_pressed()
+    private void OnGoToRightButtonPressed()
     {
         GoToRoom(Direction.Right);
+    }
+
+//-----------------------------------------------------------------------------
+    private void OnMiniGameStarted()
+    {
+        SetMoveButtonEnabled(false);
+    }
+
+//-----------------------------------------------------------------------------
+    private void OnMiniGameEnded()
+    {
+        SetMoveButtonEnabled(true);
     }
 
 //-----------------------------------------------------------------------------

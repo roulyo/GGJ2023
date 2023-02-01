@@ -3,20 +3,10 @@ using System;
 
 public class ObjectOfInterest : Area2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-    }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//
-//  }
+    [Signal]
+    public delegate void ObjectPressed();
+    [Signal]
+    public delegate void ObjectReleased();
 
 //-----------------------------------------------------------------------------
     private void _on_Area2D_mouse_entered()
@@ -28,5 +18,22 @@ public class ObjectOfInterest : Area2D
     private void _on_Area2D_mouse_exited()
     {
         (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
+    }
+
+    //-----------------------------------------------------------------------------
+    private void _on_ObjectOfInterest_input_event(Node viewport, InputEvent @evt, int shape_idx)
+    {
+
+        if (@evt is InputEventMouseButton evtBttn)
+        {
+            if (evtBttn.Pressed)
+            {
+                EmitSignal(nameof(ObjectPressed));
+            }
+            else
+            {
+                EmitSignal(nameof(ObjectReleased));
+            }
+        }
     }
 }
