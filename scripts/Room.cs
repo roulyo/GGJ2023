@@ -3,23 +3,24 @@ using System;
 
 public class Room : Node2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
     [Signal]
-    public delegate void GoToLeft();
+    public delegate void MiniGameStarted();
     [Signal]
-    public delegate void GoToRight();
+    public delegate void MiniGameEnded();
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public bool IsSwitching = false;
+
+//-------------------------------------------------------------------------
+    private void OnOOIObjectBusy()
     {
-
+        (GetNode<Sprite>("BGSprite").Material as ShaderMaterial).SetShaderParam("strength", 4);
+        EmitSignal(nameof(MiniGameStarted));
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//
-//  }
+//-------------------------------------------------------------------------
+    private void OnOOIObjectAvailable()
+    {
+        (GetNode<Sprite>("BGSprite").Material as ShaderMaterial).SetShaderParam("strength", 0);
+        EmitSignal(nameof(MiniGameEnded));
+    }
 }
