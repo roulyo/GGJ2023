@@ -3,24 +3,20 @@
 [ext_resource path="res://scripts/MiniGame.cs" type="Script" id=2]
 
 [node name="MiniGame" type="Node2D"]
+position = Vector2( 512, -724 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -300.0
-margin_right = 500.0
-margin_bottom = 500.0
+margin_right = 600.0
+margin_bottom = 400.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="MiniGameHUD" type="Control" parent="."]
-margin_left = -300.0
-margin_top = -300.0
-margin_right = 500.0
-margin_bottom = 500.0
+margin_right = 600.0
+margin_bottom = 400.0
 mouse_filter = 2
 
 [node name="Message" type="Label" parent="MiniGameHUD"]

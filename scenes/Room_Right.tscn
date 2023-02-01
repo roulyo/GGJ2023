@@ -9,4 +9,4 @@ scale = Vector2( -0.851, 0.66 )
 
 [node name="Sunflowers" parent="." index="1"]
 position = Vector2( 583, 216 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 1, 1 )
