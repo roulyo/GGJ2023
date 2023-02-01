@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class ObjectOfInterest : Area2D
 {
