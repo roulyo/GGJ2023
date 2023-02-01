@@ -13,7 +13,7 @@ public class Main : Node2D
 
     private Vector2     _screenSize;
 
-    private Node2D[]    _rooms = new Node2D[2];
+    private Room[]      _rooms = new Room[2];
     private int         _currentRoomIndex = 0;
 
     private bool        _switching = false;
@@ -24,8 +24,8 @@ public class Main : Node2D
     {
         _screenSize = GetViewportRect().Size;
 
-        _rooms[0] = GetNode<Node2D>("Room_Left");
-        _rooms[1] = GetNode<Node2D>("Room_Right");
+        _rooms[0] = GetNode<Room>("Room_Left");
+        _rooms[1] = GetNode<Room>("Room_Right");
 
         _rooms[_currentRoomIndex].Visible = true;
     }
@@ -47,12 +47,14 @@ public class Main : Node2D
     {
         _switching = true;
         _moveDirection = (int)direction;
+        _rooms[_currentRoomIndex].IsSwitching = true;
         _currentRoomIndex = nimod(_currentRoomIndex + (int)direction, _rooms.Length);
         _rooms[_currentRoomIndex].Visible = true;
         _rooms[_currentRoomIndex].Position = new Vector2(
             x: _screenSize.x * _moveDirection,
             y: 0
         );
+        _rooms[_currentRoomIndex].IsSwitching = true;
 
         SetMoveButtonEnabled(false);
     }
@@ -79,6 +81,8 @@ public class Main : Node2D
 
         if (switchCompleted)
         {
+            _rooms[_currentRoomIndex].IsSwitching = false;
+            _rooms[oldRoomIndex].IsSwitching = false;
             _rooms[oldRoomIndex].Visible = false;
             _moveDirection = 0;
             _switching = false;

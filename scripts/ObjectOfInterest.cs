@@ -3,16 +3,17 @@ using Godot;
 public class ObjectOfInterest : Area2D
 {
     [Signal]
-    public delegate void ObjectPressed();
+    public delegate void ObjectBusy();
     [Signal]
-    public delegate void ObjectReleased();
+    public delegate void ObjectAvailable();
 
     private bool IsMiniGameOpen = false;
 
 //-----------------------------------------------------------------------------
     public override void _Input(InputEvent inputEvent)
     {
-        if (!(GetParent() as CanvasItem).Visible)
+        if (   !(GetParent() as CanvasItem).Visible
+            || (GetParent() as Room).IsSwitching)
             return;
 
         if(inputEvent is InputEventMouseButton)
@@ -30,7 +31,7 @@ public class ObjectOfInterest : Area2D
                     miniGame.GlobalPosition = new Vector2(GetViewportRect().Size.x/2-miniGameSizeX/2 , GetViewportRect().Size.y/2-miniGameSizeY/2);
                     miniGame.Show();
 
-                    EmitSignal(nameof(ObjectPressed));
+                    EmitSignal(nameof(ObjectBusy));
                 }
             }
         }
@@ -54,6 +55,6 @@ public class ObjectOfInterest : Area2D
         IsMiniGameOpen = false;
         GetNode<Node2D>("MiniGame").Hide();
 
-        EmitSignal(nameof(ObjectReleased));
+        EmitSignal(nameof(ObjectAvailable));
     }
 }
