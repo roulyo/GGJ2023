@@ -12,10 +12,13 @@ public class ObjectOfInterest : Area2D
 //-----------------------------------------------------------------------------
     public override void _Input(InputEvent inputEvent)
     {
+        if (!Visible)
+            return;
+
         if(inputEvent is InputEventMouseButton)
         {
             var sprite = GetNode<Sprite>("Sprite");
-            if(sprite.IsPixelOpaque(GetLocalMousePosition()) && !IsMiniGameOpen)
+            if(sprite.IsPixelOpaque(sprite.ToLocal(GetGlobalMousePosition())) && !IsMiniGameOpen)
             {
                 GetTree().SetInputAsHandled();
                 if(inputEvent.IsActionPressed("click"))
@@ -26,7 +29,21 @@ public class ObjectOfInterest : Area2D
                     var miniGameSizeY = miniGame.GetNode<ColorRect>("ColorRect").RectSize.y;
                     miniGame.GlobalPosition = new Vector2(GetViewportRect().Size.x/2-miniGameSizeX/2 , GetViewportRect().Size.y/2-miniGameSizeY/2);
                     miniGame.Show();
+
+                    EmitSignal(nameof(ObjectPressed));
                 }
+            }
+        }
+        else if(inputEvent is InputEventMouseMotion)
+        {
+            var sprite = GetNode<Sprite>("Sprite");
+            if(sprite.IsPixelOpaque(sprite.ToLocal(GetGlobalMousePosition())))
+            {
+                (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 4.20);
+            }
+            else
+            {
+                (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
             }
         }
     }
@@ -36,32 +53,7 @@ public class ObjectOfInterest : Area2D
         //TODO: Be sure to reset the game or not if keeping clue
         IsMiniGameOpen = false;
         GetNode<Node2D>("MiniGame").Hide();
-    }
-//-----------------------------------------------------------------------------
-    private void OnArea2DMouseEntered()
-    {
-        (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 4.20);
-    }
-//-----------------------------------------------------------------------------
-    private void OnArea2DMouseExited()
-    {
-        (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
-    }
 
-    //-----------------------------------------------------------------------------
-    private void _on_ObjectOfInterest_input_event(Node viewport, InputEvent @evt, int shape_idx)
-    {
-
-        if (@evt is InputEventMouseButton evtBttn)
-        {
-            if (evtBttn.Pressed)
-            {
-                EmitSignal(nameof(ObjectPressed));
-            }
-            else
-            {
-                EmitSignal(nameof(ObjectReleased));
-            }
-        }
+        EmitSignal(nameof(ObjectReleased));
     }
 }
