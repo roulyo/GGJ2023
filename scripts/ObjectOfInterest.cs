@@ -21,14 +21,12 @@ public class ObjectOfInterest : Area2D
 //-----------------------------------------------------------------------------
     private void _on_Area2D_mouse_entered()
     {
-        CanvasItemMaterial material = (CanvasItemMaterial)GetNode<Sprite>("Sprite").Material;
-        material.BlendMode = (Godot.CanvasItemMaterial.BlendModeEnum) 1;
+        (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 4.20);
     }
 
 //-----------------------------------------------------------------------------
     private void _on_Area2D_mouse_exited()
     {
-        CanvasItemMaterial material = (CanvasItemMaterial)GetNode<Sprite>("Sprite").Material;
-        material.BlendMode = (Godot.CanvasItemMaterial.BlendModeEnum) 0; //BlendMode.BLEND_MODE_ADD;
+        (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
     }
 }

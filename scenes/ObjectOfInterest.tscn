@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/ObjectOfInterest.cs" type="Script" id=1]
 [ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
+[ext_resource path="res://assets/shaders/outline.gdshader" type="Shader" id=3]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/color = Color( 0.917647, 0.92549, 0.705882, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
 
 [node name="ObjectOfInterest" type="Area2D"]
 script = ExtResource( 1 )
@@ -12,7 +19,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 1 )
+material = SubResource( 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
