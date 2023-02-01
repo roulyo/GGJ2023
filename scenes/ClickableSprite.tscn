@@ -11,7 +11,8 @@ position = Vector2( 475, 291 )
 scale = Vector2( 0.809963, 0.798351 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-MiniGame = ExtResource( 3 )
+
+[node name="MiniGame" parent="Sprite2D" instance=ExtResource( 3 )]
+scale = Vector2( 1, 1 )
+
+[connection signal="CloseGame" from="Sprite2D/MiniGame" to="Sprite2D" method="CloseMiniGame"]
