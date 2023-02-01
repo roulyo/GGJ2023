@@ -3,7 +3,6 @@
 [ext_resource path="res://scripts/MiniGame.cs" type="Script" id=2]
 
 [node name="MiniGame" type="Node2D"]
-position = Vector2( 512, -724 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
