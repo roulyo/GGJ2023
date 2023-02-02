@@ -11,14 +11,14 @@ public class Room : Node2D
     public bool IsSwitching = false;
 
 //-------------------------------------------------------------------------
-    private void OnOOIObjectBusy()
+    public void OnOOIObjectBusy()
     {
         (GetNode<Sprite>("BGSprite").Material as ShaderMaterial).SetShaderParam("strength", 4);
         EmitSignal(nameof(MiniGameStarted));
     }
 
 //-------------------------------------------------------------------------
-    private void OnOOIObjectAvailable()
+    public void OnOOIObjectAvailable()
     {
         (GetNode<Sprite>("BGSprite").Material as ShaderMaterial).SetShaderParam("strength", 0);
         EmitSignal(nameof(MiniGameEnded));

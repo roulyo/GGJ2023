@@ -10,6 +10,3 @@ scale = Vector2( -0.851, 0.66 )
 
 [node name="SunflowerContext" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 659, 199 )
-
-[connection signal="ObjectAvailable" from="SunflowerContext" to="." method="OnOOIObjectAvailable"]
-[connection signal="ObjectBusy" from="SunflowerContext" to="." method="OnOOIObjectBusy"]
