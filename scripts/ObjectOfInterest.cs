@@ -9,6 +9,14 @@ public class ObjectOfInterest : Node2D
 
     private bool IsFeatureOpen = false;
 
+
+//-----------------------------------------------------------------------------
+    public override void _Ready()
+    {
+        var sprite = GetNode<Sprite>("Sprite");
+        sprite.Material = (ShaderMaterial) sprite.Material.Duplicate();
+    }
+
 //-----------------------------------------------------------------------------
     public override void _Input(InputEvent inputEvent)
     {
@@ -41,11 +49,11 @@ public class ObjectOfInterest : Node2D
             var sprite = GetNode<Sprite>("Sprite");
             if(sprite.IsPixelOpaque(sprite.ToLocal(GetGlobalMousePosition())))
             {
-                (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 4.20);
+                (sprite.Material as ShaderMaterial).SetShaderParam("width", 4.20);
             }
             else
             {
-                (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
+                (sprite.Material as ShaderMaterial).SetShaderParam("width", 0.00);
             }
         }
     }

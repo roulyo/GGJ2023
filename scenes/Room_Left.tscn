@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/SunflowerGame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/HomeworkObject.tscn" type="PackedScene" id=3]
 
 [node name="Room_Left" instance=ExtResource( 1 )]
 
-[node name="SunflowerGame" parent="." index="1" instance=ExtResource( 2 )]
-position = Vector2( 87, 238 )
+[node name="Homework" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 387, 322 )
+rotation = 0.247422
+scale = Vector2( 0.0949746, 0.0949746 )
 
-[connection signal="ObjectAvailable" from="SunflowerGame" to="." method="OnOOIObjectAvailable"]
-[connection signal="ObjectBusy" from="SunflowerGame" to="." method="OnOOIObjectBusy"]
+[node name="SunflowerGame" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( -19, 259 )
+rotation = -0.464873
+scale = Vector2( 0.375376, 0.672743 )
+
+[connection signal="ObjectAvailable" from="Homework" to="." method="OnOOIObjectAvailable"]
+[connection signal="ObjectBusy" from="Homework" to="." method="OnOOIObjectBusy"]

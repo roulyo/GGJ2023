@@ -16,7 +16,6 @@ visible = false
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[connection signal="Switching" from="." to="HUD" method="SetMoveButtonEnabled"]
 [connection signal="MiniGameEnded" from="Room_Right" to="HUD" method="OnMiniGameEnded"]
 [connection signal="MiniGameStarted" from="Room_Right" to="HUD" method="OnMiniGameStarted"]
 [connection signal="MiniGameEnded" from="Room_Left" to="HUD" method="OnMiniGameEnded"]

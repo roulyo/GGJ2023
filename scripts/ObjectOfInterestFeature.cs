@@ -14,6 +14,7 @@ public class ObjectOfInterestFeature : Node2D
 
     public override void _Ready()
     {
+        SetAsToplevel(true);
         _feature = (ObjectOfInterestFeature) Feature.Instance();
         AddChild(_feature);
     }

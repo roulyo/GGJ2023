@@ -5,9 +5,9 @@
 [ext_resource path="res://scenes/ObjectOfInterestFeature.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/shaders/outline.gdshader" type="Shader" id=4]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
-shader_param/color = Color( 0.917647, 0.92549, 0.705882, 1 )
+shader_param/color = Color( 0.854902, 0.878431, 0.705882, 1 )
 shader_param/width = 0.0
 shader_param/pattern = 2
 shader_param/inside = false
@@ -20,7 +20,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
