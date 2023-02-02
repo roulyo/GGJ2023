@@ -11,4 +11,4 @@ data_*/
 *.sln
 
 # Vscode-specific ignores
-.vscode
+.vscode/*
