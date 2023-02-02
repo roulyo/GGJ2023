@@ -35,6 +35,6 @@ public class ObjectOfInterestFeature : Node2D
 
     protected void RequestClose()
     {
-        (GetParent() as ObjectOfInterestFeature).EmitSignal("CloseFeatureRequest");
+        (GetParent() as ObjectOfInterestFeature).EmitSignal(nameof(CloseFeatureRequest));
     }
 }
