@@ -4,7 +4,7 @@ using System;
 public class Main : Node2D
 {
     [Signal]
-    public delegate void Switching(bool isIsSwitching);
+    public delegate void Switching(bool isSwitching);
 
     private const float MOVE_SPEED_PPS = 1024.0f;
 
