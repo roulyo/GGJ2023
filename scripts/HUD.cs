@@ -25,7 +25,7 @@ public class HUD : CanvasLayer
         }
     }
 //-----------------------------------------------------------------------------
-    public void SetMoveButtonEnabled(bool enabled)
+    private void SetMoveButtonEnabled(bool enabled)
     {
         GetNode<Button>("Control/GoToLeftButton").Disabled = !enabled;
         GetNode<Button>("Control/GoToRightButton").Disabled = !enabled;
@@ -41,5 +41,16 @@ public class HUD : CanvasLayer
     public void OnGoToRightButtonPressed()
     {
         EmitSignal(nameof(GoToRight));
+    }
+//-----------------------------------------------------------------------------
+    private void OnMiniGameStarted()
+    {
+        SetMoveButtonEnabled(false);
+    }
+
+//-----------------------------------------------------------------------------
+    private void OnMiniGameEnded()
+    {
+        SetMoveButtonEnabled(true);
     }
 }
