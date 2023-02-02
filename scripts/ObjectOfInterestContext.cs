@@ -1,17 +1,14 @@
 using Godot;
-public class ObjectOfInterestContext : Node2D
+public class ObjectOfInterestContext : ObjectOfInterestFeature
 {
-    [Signal]
-    public delegate void CloseContext();
-
     public override void _Ready()
     {
         Hide();
     }
+
 //-----------------------------------------------------------------------------
     public void OnCloseContextPressed()
     {
-        Hide();
-        EmitSignal(nameof(CloseContext));
+        RequestClose();
     }
 }

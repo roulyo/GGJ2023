@@ -1,10 +1,7 @@
 using Godot;
 
-public class MiniGame : Node2D
+public class MiniGame : ObjectOfInterestFeature
 {
-    [Signal]
-    public delegate void CloseGame();
-
     public override void _Ready()
     {
         Hide();
@@ -41,7 +38,7 @@ public class MiniGame : Node2D
 
     public void OnCloseButtonPressed()
     {
-        EmitSignal("CloseGame");
+        RequestClose();
     }
 
     public void OnWinButtonPressed()
