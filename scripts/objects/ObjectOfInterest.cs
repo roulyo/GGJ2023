@@ -58,7 +58,8 @@ public class ObjectOfInterest : Node2D
             {
                 (sprite.Material as ShaderMaterial).SetShaderParam(
                     "width",
-                     4.20 / sprite.GlobalTransform.Scale.x);
+                    4.20 / sprite.GlobalTransform.Scale.x
+                );
             }
             else
             {
@@ -74,7 +75,6 @@ public class ObjectOfInterest : Node2D
         IsFeatureOpen = false;
         GetNode<ObjectOfInterestFeature>("Feature").CloseFeature();
         (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
-
         EmitSignal(nameof(ObjectAvailable));
     }
 }

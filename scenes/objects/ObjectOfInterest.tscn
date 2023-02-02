@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/ObjectOfInterest.cs" type="Script" id=1]
-[ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
-[ext_resource path="res://scenes/ObjectOfInterestFeature.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/shaders/outline.gdshader" type="Shader" id=4]
+[ext_resource path="res://scripts/objects/ObjectOfInterest.cs" type="Script" id=1]
+[ext_resource path="res://scenes/features/ObjectOfInterestFeature.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/shaders/outline.gdshader" type="Shader" id=3]
+[ext_resource path="res://assets/sunflowers.png" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
+shader = ExtResource( 3 )
 shader_param/color = Color( 0.854902, 0.878431, 0.705882, 1 )
 shader_param/width = 0.0
 shader_param/pattern = 2
@@ -22,6 +22,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
-[node name="Feature" parent="." instance=ExtResource( 3 )]
+[node name="Feature" parent="." instance=ExtResource( 2 )]
