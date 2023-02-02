@@ -25,11 +25,11 @@ public class ObjectOfInterest : Area2D
                 if(inputEvent.IsActionPressed("click"))
                 {
                     IsMiniGameOpen = true;
-                    var miniGame = GetNode<Node2D>("MiniGame");
+                    var miniGame = GetNode<MiniGame>("MiniGame");
                     var miniGameSizeX = miniGame.GetNode<ColorRect>("ColorRect").RectSize.x;
                     var miniGameSizeY = miniGame.GetNode<ColorRect>("ColorRect").RectSize.y;
                     miniGame.GlobalPosition = new Vector2(GetViewportRect().Size.x/2-miniGameSizeX/2 , GetViewportRect().Size.y/2-miniGameSizeY/2);
-                    miniGame.Show();
+                    miniGame.OpenGameCanvas();
 
                     EmitSignal(nameof(ObjectBusy));
                 }
@@ -53,7 +53,7 @@ public class ObjectOfInterest : Area2D
     {
         //TODO: Be sure to reset the game or not if keeping clue
         IsMiniGameOpen = false;
-        GetNode<Node2D>("MiniGame").Hide();
+        GetNode<MiniGame>("MiniGame").CloseGameCanvas();
 
         EmitSignal(nameof(ObjectAvailable));
     }
