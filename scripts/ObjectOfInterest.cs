@@ -29,7 +29,6 @@ public class ObjectOfInterest : Node2D
                     var feature = GetNode<ObjectOfInterestFeature>("Feature");
                     var featureSizeX = feature.GetSize().x;
                     var featureSizeY = feature.GetSize().y;
-                    GD.Print(feature.GetSize());
                     feature.GlobalPosition = new Vector2(GetViewportRect().Size.x/2-featureSizeX/2 , GetViewportRect().Size.y/2-featureSizeY/2);
                     feature.OpenFeature();
 
