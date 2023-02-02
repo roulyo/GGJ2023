@@ -10,3 +10,5 @@ data_*/
 *.csproj
 *.sln
 
+# Vscode-specific ignores
+.vscode/

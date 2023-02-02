@@ -3,6 +3,9 @@ using System;
 
 public class Main : Node2D
 {
+    [Signal]
+    public delegate void Switching(bool isSwitching);
+
     private const float MOVE_SPEED_PPS = 1024.0f;
 
     enum Direction : int
@@ -56,7 +59,7 @@ public class Main : Node2D
         );
         _rooms[_currentRoomIndex].IsSwitching = true;
 
-        SetMoveButtonEnabled(false);
+        EmitSignal(nameof(Switching), false);
     }
 
 //-----------------------------------------------------------------------------
@@ -87,39 +90,20 @@ public class Main : Node2D
             _moveDirection = 0;
             _switching = false;
 
-            SetMoveButtonEnabled(true);
+            EmitSignal(nameof(Switching), true);
         }
     }
 
 //-----------------------------------------------------------------------------
-    private void SetMoveButtonEnabled(bool enabled)
-    {
-        GetNode<Button>("Control/GoToLeftButton").Disabled = !enabled;
-        GetNode<Button>("Control/GoToRightButton").Disabled = !enabled;
-    }
-
-//-----------------------------------------------------------------------------
-    private void OnGoToLeftButtonPressed()
+    private void GoToLeft()
     {
         GoToRoom(Direction.Left);
     }
 
 //-----------------------------------------------------------------------------
-    private void OnGoToRightButtonPressed()
+    private void GoToRight()
     {
         GoToRoom(Direction.Right);
-    }
-
-//-----------------------------------------------------------------------------
-    private void OnMiniGameStarted()
-    {
-        SetMoveButtonEnabled(false);
-    }
-
-//-----------------------------------------------------------------------------
-    private void OnMiniGameEnded()
-    {
-        SetMoveButtonEnabled(true);
     }
 
 //-----------------------------------------------------------------------------
