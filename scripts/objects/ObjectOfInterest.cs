@@ -56,7 +56,10 @@ public class ObjectOfInterest : Node2D
             var sprite = GetNode<Sprite>("Sprite");
             if(sprite.IsPixelOpaque(sprite.ToLocal(GetGlobalMousePosition())))
             {
-                (sprite.Material as ShaderMaterial).SetShaderParam("width", 4.20);
+                (sprite.Material as ShaderMaterial).SetShaderParam(
+                    "width",
+                    4.20 / sprite.GlobalTransform.Scale.x
+                );
             }
             else
             {
