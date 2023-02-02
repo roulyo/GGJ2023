@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/ObjectOfInterest.cs" type="Script" id=1]
 [ext_resource path="res://assets/sunflowers.png" type="Texture" id=2]
 [ext_resource path="res://scenes/MiniGame.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/shaders/outline.gdshader" type="Shader" id=4]
+[ext_resource path="res://scenes/ObjectOfInterestContext.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
@@ -29,4 +30,7 @@ polygon = PoolVector2Array( 15, -158, 37, -167, 79, -166, 80, -154, 88, -144, 12
 
 [node name="MiniGame" parent="." instance=ExtResource( 3 )]
 
+[node name="ObjectOfInterestContext" parent="." instance=ExtResource( 5 )]
+
 [connection signal="CloseGame" from="MiniGame" to="." method="CloseMiniGame"]
+[connection signal="CloseContext" from="ObjectOfInterestContext" to="." method="CloseContextDialogue"]
