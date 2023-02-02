@@ -12,6 +12,6 @@ public class ObjectOfInterestContext : Node2D
     public void OnCloseContextPressed()
     {
         Hide();
-        EmitSignal("CloseContext");
+        EmitSignal(nameof(CloseContext));
     }
 }

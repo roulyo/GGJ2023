@@ -94,18 +94,18 @@ public class Main : Node2D
 //-----------------------------------------------------------------------------
     private void SetMoveButtonEnabled(bool enabled)
     {
-        GetNode<Button>("Control/GoToLeftButton").Disabled = !enabled;
-        GetNode<Button>("Control/GoToRightButton").Disabled = !enabled;
+        GetNode<Button>("HUD/Control/GoToLeftButton").Disabled = !enabled;
+        GetNode<Button>("HUD/Control/GoToRightButton").Disabled = !enabled;
     }
 
 //-----------------------------------------------------------------------------
-    private void OnGoToLeftButtonPressed()
+    private void GoToLeft()
     {
         GoToRoom(Direction.Left);
     }
 
 //-----------------------------------------------------------------------------
-    private void OnGoToRightButtonPressed()
+    private void GoToRight()
     {
         GoToRoom(Direction.Right);
     }
