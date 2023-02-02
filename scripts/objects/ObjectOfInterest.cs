@@ -56,9 +56,7 @@ public class ObjectOfInterest : Node2D
             var sprite = GetNode<Sprite>("Sprite");
             if(sprite.IsPixelOpaque(sprite.ToLocal(GetGlobalMousePosition())))
             {
-                (sprite.Material as ShaderMaterial).SetShaderParam(
-                    "width",
-                     4.20 / sprite.GlobalTransform.Scale.x);
+                (sprite.Material as ShaderMaterial).SetShaderParam("width", 4.20);
             }
             else
             {
@@ -74,7 +72,6 @@ public class ObjectOfInterest : Node2D
         IsFeatureOpen = false;
         GetNode<ObjectOfInterestFeature>("Feature").CloseFeature();
         (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
-
         EmitSignal(nameof(ObjectAvailable));
     }
 }
