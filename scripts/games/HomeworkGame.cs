@@ -38,7 +38,6 @@ public class HomeworkGame : ObjectOfInterestFeature
 //-----------------------------------------------------------------------------
     public void OnCloseButtonPressed()
     {
-        GD.Print("close");
         RequestClose();
     }
 }

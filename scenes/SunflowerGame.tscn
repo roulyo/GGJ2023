@@ -13,5 +13,3 @@ texture = ExtResource( 3 )
 
 [node name="Feature" parent="." index="1"]
 Feature = ExtResource( 1 )
-
-[connection signal="CloseFeatureRequest" from="Feature" to="." method="CloseFeature"]

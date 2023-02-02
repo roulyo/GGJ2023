@@ -15,6 +15,3 @@ scale = Vector2( 0.0949746, 0.0949746 )
 position = Vector2( -19, 259 )
 rotation = -0.464873
 scale = Vector2( 0.375376, 0.672743 )
-
-[connection signal="ObjectAvailable" from="Homework" to="." method="OnOOIObjectAvailable"]
-[connection signal="ObjectBusy" from="Homework" to="." method="OnOOIObjectBusy"]
