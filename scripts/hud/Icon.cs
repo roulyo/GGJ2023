@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class Icon : Control
 {
@@ -7,11 +6,6 @@ public class Icon : Control
     public delegate void DoubleClick(int index);
 
     public int Index;
-
-//-----------------------------------------------------------------------------
-    public override void _Ready()
-    {
-    }
 
 //-----------------------------------------------------------------------------
     public override void _Input(InputEvent inputEvent)

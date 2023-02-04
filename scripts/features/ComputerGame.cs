@@ -6,16 +6,10 @@ public class ComputerGame : ObjectOfInterestFeature
 {
     private class FileSystem
     {
-        public enum Type
-        {
-            File,
-            Folder
-        }
-
-        public String                      Name = "unknown";
-        public FileSystem                  Parent = null;
-        public List<FileSystem>            Children = new List<FileSystem>();
-        public List<Tuple<String, String>> Files = new List<Tuple<String, String>>();
+        public String                       Name = "unknown";
+        public FileSystem                   Parent = null;
+        public List<FileSystem>             Children = new List<FileSystem>();
+        public List<Tuple<String, String>>  Files = new List<Tuple<String, String>>();
 
         public FileSystem(String name)
         {
