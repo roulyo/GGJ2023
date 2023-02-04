@@ -6,11 +6,13 @@ public class HUD : CanvasLayer
     public delegate void GoToLeft();
     [Signal]
     public delegate void GoToRight();
+    [Signal]
+    public delegate void BlurBackground();
 
     public override void _Ready()
     {
         PauseMode = Node.PauseModeEnum.Process;
-        GetNode<Label>("Control/Pause").Hide();
+        GetNode<Control>("Pause").Hide();
     }
 
 //-----------------------------------------------------------------------------
@@ -19,9 +21,10 @@ public class HUD : CanvasLayer
         //Pause the game
         if (inputEvent.IsActionPressed("pause"))
         {
-            GetNode<Label>("Control/Pause").Visible = !GetNode<Label>("Control/Pause").Visible;
+            GetNode<Control>("Pause").Visible = !GetNode<Control>("Pause").Visible;
             GetTree().Paused = !GetTree().Paused;
             SetMoveButtonEnabled(GetNode<Button>("Control/GoToLeftButton").Disabled);
+            EmitSignal(nameof(BlurBackground), GetTree().Paused);
         }
     }
 //-----------------------------------------------------------------------------
@@ -58,5 +61,23 @@ public class HUD : CanvasLayer
     {
         GetNode<Label>("Control/PopupPanel/Clues").Text += clue;
         GetNode<Label>("Control/PopupPanel/Clues").Text += "\n";
+    }
+//-----------------------------------------------------------------------------
+    public void OnUnpauseButtonPressed()
+    {
+        GetNode<Control>("Pause").Hide();
+        GetTree().Paused = false;
+        SetMoveButtonEnabled(true);
+        EmitSignal(nameof(BlurBackground), false);
+    }
+//-----------------------------------------------------------------------------
+    public void OnStartScreenButtonPressed()
+    {
+        GetTree().ChangeScene("res://scenes/StartScene.tscn");
+    }
+//-----------------------------------------------------------------------------
+    public void OnQuitGameButtonPressed()
+    {
+        GetTree().Quit();
     }
 }

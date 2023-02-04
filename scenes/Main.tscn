@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/rooms/Room_Right.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.cs" type="Script" id=2]
 [ext_resource path="res://scenes/rooms/Room_Left.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/shaders/blur.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/strength = 0
 
 [node name="Main" type="Node2D"]
+material = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Room_Right" parent="." instance=ExtResource( 1 )]
@@ -22,5 +28,6 @@ visible = false
 [connection signal="MiniGameEnded" from="Room_Left" to="HUD" method="OnMiniGameEnded"]
 [connection signal="MiniGameStarted" from="Room_Left" to="HUD" method="OnMiniGameStarted"]
 [connection signal="MiniGameWon" from="Room_Left" to="HUD" method="OnMiniGameWon"]
+[connection signal="BlurBackground" from="HUD" to="." method="OnBlurBackground"]
 [connection signal="GoToLeft" from="HUD" to="." method="GoToLeft"]
 [connection signal="GoToRight" from="HUD" to="." method="GoToRight"]

@@ -111,4 +111,16 @@ public class Main : Node2D
     {
         return (int) (a - b * Math.Floor(a / b));
     }
+//-------------------------------------------------------------------------
+    public void OnBlurBackground(bool shouldBlur)
+    {
+        if(shouldBlur)
+        {
+            (Material as ShaderMaterial).SetShaderParam("strength", 4);
+        } 
+        else if(!shouldBlur)
+        {
+            (Material as ShaderMaterial).SetShaderParam("strength", 0);
+        }
+    }
 }
