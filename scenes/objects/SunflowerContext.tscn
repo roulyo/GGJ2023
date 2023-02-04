@@ -7,5 +7,3 @@
 
 [node name="Feature" parent="." index="1"]
 Feature = ExtResource( 2 )
-
-[connection signal="CloseFeatureRequest" from="Feature" to="." method="CloseFeature"]
