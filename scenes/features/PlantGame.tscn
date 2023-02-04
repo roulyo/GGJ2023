@@ -32,16 +32,17 @@ margin_bottom = 22.0
 text = "X"
 
 [node name="RedDropZone" type="Position2D" parent="." index="2" groups=["dropzone"]]
+position = Vector2( 155, 42 )
 script = ExtResource( 5 )
 DropZoneColor = "Red"
 
 [node name="BlueDropZone" type="Position2D" parent="." index="3" groups=["dropzone"]]
-position = Vector2( 231, 222 )
+position = Vector2( 69, 361 )
 script = ExtResource( 5 )
 DropZoneColor = "Blue"
 
 [node name="YellowDropZone" type="Position2D" parent="." index="4" groups=["dropzone"]]
-position = Vector2( 310, 74 )
+position = Vector2( 60, 183 )
 script = ExtResource( 5 )
 DropZoneColor = "Yellow"
 
@@ -52,6 +53,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
+BucketColor = "Blue"
 
 [node name="Area2D" type="Area2D" parent="BlueBucket" index="0"]
 
@@ -59,13 +61,13 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="YellowBucket" type="Sprite" parent="." index="6"]
-modulate = Color( 0.788235, 0.760784, 0.0666667, 1 )
 position = Vector2( 551, 212 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
+BucketColor = "Yellow"
 
 [node name="Area2D" type="Area2D" parent="YellowBucket" index="0"]
 
@@ -73,13 +75,13 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="RedBucket" type="Sprite" parent="." index="7"]
-modulate = Color( 0.74902, 0, 0, 1 )
 position = Vector2( 548, 109 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
+BucketColor = "Red"
 
 [node name="Area2D" type="Area2D" parent="RedBucket" index="0"]
 

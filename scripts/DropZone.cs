@@ -6,21 +6,16 @@ public class DropZone : Position2D
     [Export]
     public string DropZoneColor;
     public bool IsOccupied = false;
+    public DragAndDrop Bucket;
 
     public override void _Draw()
     {
         DrawCircle(Vector2.Zero, 75, Color.ColorN(DropZoneColor));
     }
 //-----------------------------------------------------------------------------
-    public void Select()
+    public void Select(DragAndDrop selectedBucket)
     {
-        // foreach (DropZone child in GetTree().GetNodesInGroup("dropzone"))
-        // {
-        //     if(!child.IsOccupied)
-        //     {
-        //         child.Deselect();
-        //     }
-        // }
+        Bucket = selectedBucket;
         IsOccupied = true;
         Modulate = Color.ColorN(DropZoneColor, 0.5f);
     }
