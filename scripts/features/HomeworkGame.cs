@@ -5,6 +5,8 @@ public class HomeworkGame : ObjectOfInterestFeature
 {
     public override void _Ready()
     {
+        GetNode<Label>("Control/Clue").Text = (GetParent() as ObjectOfInterestFeature).Clue;
+        GetNode<Label>("Control/Clue").Hide();
         Hide();
     }
 
@@ -15,7 +17,9 @@ public class HomeworkGame : ObjectOfInterestFeature
         {
             GetNode<Label>("Control/Mark").Text = "A+";
             GetNode<Label>("Control/Mark").Show();
+            GetNode<Label>("Control/Clue").Show();
             GetNode<LineEdit>("Control/LineEdit").Editable = false;
+            MiniGameWon((GetParent() as ObjectOfInterestFeature).Clue);
         }
         else
         {

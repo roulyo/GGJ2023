@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class PlantGame : ObjectOfInterestFeature
 {
@@ -8,7 +7,12 @@ public class PlantGame : ObjectOfInterestFeature
     public override void _Ready()
     {
         buckets = GetTree().GetNodesInGroup("bucket");
+
         GetNode<Label>("Control/Victory").Hide();
+
+        GetNode<Label>("Control/Clue").Text = (GetParent() as ObjectOfInterestFeature).Clue;
+        GetNode<Label>("Control/Clue").Hide();
+        
         Hide();
     }
 
@@ -19,8 +23,9 @@ public class PlantGame : ObjectOfInterestFeature
         if(buckets.Count == numberOfCorrectPlacedBuckets)
         {
             GetNode<Label>("Control/Victory").Show();
+            GetNode<Label>("Control/Clue").Show();
+            MiniGameWon((GetParent() as ObjectOfInterestFeature).Clue);
         }
-
     }
 
 //-----------------------------------------------------------------------------

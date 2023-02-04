@@ -7,6 +7,12 @@ public class ObjectOfInterestFeature : Node2D
     public PackedScene Feature;
 #pragma warning restore 649
 
+    [Export]
+    public string Clue;
+
+    [Signal]
+    public delegate void UpdateCluesRequest(string clue);
+
     [Signal]
     public delegate void CloseFeatureRequest();
 
@@ -37,5 +43,10 @@ public class ObjectOfInterestFeature : Node2D
     protected void RequestClose()
     {
         (GetParent() as ObjectOfInterestFeature).EmitSignal(nameof(CloseFeatureRequest));
+    }
+
+    protected void MiniGameWon(string clue)
+    {
+        (GetParent() as ObjectOfInterestFeature).EmitSignal(nameof(UpdateCluesRequest), clue);
     }
 }

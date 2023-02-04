@@ -18,7 +18,9 @@ visible = false
 
 [connection signal="MiniGameEnded" from="Room_Right" to="HUD" method="OnMiniGameEnded"]
 [connection signal="MiniGameStarted" from="Room_Right" to="HUD" method="OnMiniGameStarted"]
+[connection signal="MiniGameWon" from="Room_Right" to="HUD" method="OnMiniGameWon"]
 [connection signal="MiniGameEnded" from="Room_Left" to="HUD" method="OnMiniGameEnded"]
 [connection signal="MiniGameStarted" from="Room_Left" to="HUD" method="OnMiniGameStarted"]
+[connection signal="MiniGameWon" from="Room_Left" to="HUD" method="OnMiniGameWon"]
 [connection signal="GoToLeft" from="HUD" to="." method="GoToLeft"]
 [connection signal="GoToRight" from="HUD" to="." method="GoToRight"]

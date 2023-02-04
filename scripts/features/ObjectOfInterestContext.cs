@@ -1,4 +1,3 @@
-using Godot;
 public class ObjectOfInterestContext : ObjectOfInterestFeature
 {
     public override void _Ready()
