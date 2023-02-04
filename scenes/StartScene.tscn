@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://assets/PeaBerry-Mono.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/StartScene.cs" type="Script" id=2]
 
 [node name="StartScene" type="CanvasLayer"]
@@ -23,6 +24,7 @@ margin_top = -7.0
 margin_right = -518.0
 margin_bottom = 7.0
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "For20AndMe"
 align = 1
 uppercase = true
@@ -35,6 +37,7 @@ anchor_bottom = 1.0
 margin_left = -83.5
 margin_top = -66.0
 margin_right = 83.5
+custom_fonts/font = ExtResource( 1 )
 text = "Press to start."
 
 [connection signal="pressed" from="Control/StartButton" to="." method="OnStartButtonPressed"]

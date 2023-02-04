@@ -59,18 +59,53 @@ margin_bottom = 28.0
 custom_fonts/font = ExtResource( 3 )
 text = ">"
 
-[node name="Pause" type="Label" parent="Control"]
+[node name="Pause" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -105.0
-margin_top = -8.0
-margin_right = 105.0
-margin_bottom = 8.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_right = 161.0
+custom_constants/separation = 45
+alignment = 1
+
+[node name="PauseLabel" type="Label" parent="Pause/VBoxContainer"]
+margin_top = 191.0
+margin_right = 325.0
+margin_bottom = 207.0
 custom_fonts/font = ExtResource( 3 )
-text = "The game is en pause."
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="Unpause" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 252.0
+margin_right = 325.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 3 )
+text = "Unpause"
+
+[node name="BackToStartScreen" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 319.0
+margin_right = 325.0
+margin_bottom = 341.0
+custom_fonts/font = ExtResource( 3 )
+text = "Start Screen"
+
+[node name="QuitGame" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 386.0
+margin_right = 325.0
+margin_bottom = 408.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit Game"
 
 [connection signal="pressed" from="Control/CluesButton" to="Control/PopupPanel" method="OnCluesButtonPressed"]
 [connection signal="pressed" from="Control/GoToLeftButton" to="." method="OnGoToLeftButtonPressed"]
 [connection signal="pressed" from="Control/GoToRightButton" to="." method="OnGoToRightButtonPressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/Unpause" to="." method="OnUnpauseButtonPressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/BackToStartScreen" to="." method="OnStartScreenButtonPressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/QuitGame" to="." method="OnQuitGameButtonPressed"]
