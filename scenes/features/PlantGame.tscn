@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/features/ObjectOfInterestFeature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/features/PlantGame.cs" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://scripts/DragAndDrop.cs" type="Script" id=4]
+[ext_resource path="res://scripts/Bucket.cs" type="Script" id=4]
 [ext_resource path="res://scripts/DropZone.cs" type="Script" id=5]
+[ext_resource path="res://assets/PeaBerry-Mono.tres" type="DynamicFont" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -24,7 +25,17 @@ margin_right = 600.0
 margin_bottom = 400.0
 mouse_filter = 2
 
-[node name="ToolButton" type="ToolButton" parent="Control" index="0"]
+[node name="Victory" type="Label" parent="Control" index="0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 71.0
+margin_right = 40.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 6 )
+text = "Victory!"
+
+[node name="ToolButton" type="ToolButton" parent="Control" index="1"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -20.0
@@ -32,22 +43,22 @@ margin_bottom = 22.0
 text = "X"
 
 [node name="RedDropZone" type="Position2D" parent="." index="2" groups=["dropzone"]]
-position = Vector2( 155, 42 )
+position = Vector2( 490, 334 )
 script = ExtResource( 5 )
 DropZoneColor = "Red"
 
 [node name="BlueDropZone" type="Position2D" parent="." index="3" groups=["dropzone"]]
-position = Vector2( 69, 361 )
+position = Vector2( 76, 337 )
 script = ExtResource( 5 )
 DropZoneColor = "Blue"
 
 [node name="YellowDropZone" type="Position2D" parent="." index="4" groups=["dropzone"]]
-position = Vector2( 60, 183 )
+position = Vector2( 277, 335 )
 script = ExtResource( 5 )
 DropZoneColor = "Yellow"
 
-[node name="BlueBucket" type="Sprite" parent="." index="5"]
-position = Vector2( 550, 311 )
+[node name="BlueBucket" type="Sprite" parent="." index="5" groups=["bucket"]]
+position = Vector2( 540, 232 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -60,8 +71,8 @@ BucketColor = "Blue"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueBucket/Area2D" index="0"]
 shape = SubResource( 1 )
 
-[node name="YellowBucket" type="Sprite" parent="." index="6"]
-position = Vector2( 551, 212 )
+[node name="YellowBucket" type="Sprite" parent="." index="6" groups=["bucket"]]
+position = Vector2( 435, 232 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -74,8 +85,8 @@ BucketColor = "Yellow"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YellowBucket/Area2D" index="0"]
 shape = SubResource( 1 )
 
-[node name="RedBucket" type="Sprite" parent="." index="7"]
-position = Vector2( 548, 109 )
+[node name="RedBucket" type="Sprite" parent="." index="7" groups=["bucket"]]
+position = Vector2( 323, 232 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -89,6 +100,9 @@ BucketColor = "Red"
 shape = SubResource( 1 )
 
 [connection signal="pressed" from="Control/ToolButton" to="." method="OnCloseButtonPressed"]
+[connection signal="CorrectSpot" from="BlueBucket" to="." method="IsGameWon"]
 [connection signal="input_event" from="BlueBucket/Area2D" to="BlueBucket" method="OnArea2DInputEvent"]
+[connection signal="CorrectSpot" from="YellowBucket" to="." method="IsGameWon"]
 [connection signal="input_event" from="YellowBucket/Area2D" to="YellowBucket" method="OnArea2DInputEvent"]
+[connection signal="CorrectSpot" from="RedBucket" to="." method="IsGameWon"]
 [connection signal="input_event" from="RedBucket/Area2D" to="RedBucket" method="OnArea2DInputEvent"]

@@ -1,13 +1,15 @@
 using Godot;
-using System;
 
-public class DragAndDrop : Sprite
+public class Bucket : Sprite
 {
+    [Signal]
+    public delegate void CorrectSpot();
+
     [Export]
     public string BucketColor;
     private bool selected = false;
-    private bool canBeSelected = true;
-    private DropZone dropzone;
+    public bool canBeSelected = true;
+    public DropZone dropzone;
     private Godot.Collections.Array dropzones;
     private Vector2 StartPosition;
 
@@ -51,7 +53,7 @@ public class DragAndDrop : Sprite
 
         if(inputEvent.IsActionReleased("click"))
         {
-            float shortestDistance = 75;
+            float shortestDistance = 50;
             foreach (DropZone zone in dropzones)
             {
                 float distance = GlobalPosition.DistanceTo(zone.GlobalPosition);
@@ -61,16 +63,11 @@ public class DragAndDrop : Sprite
                     {
                         dropzone.Deselect();
                     }
-                    dropzone = zone;
                     zone.Select(this);
                     shortestDistance = distance;
 
                     //Check if the bucket is at the correct spot
-                    if(zone.DropZoneColor == BucketColor)
-                    {
-                        //Prevent it from being selected again.
-                        canBeSelected = false;
-                    }
+                    CheckIfCorrectLocation(this, zone.DropZoneColor);
                 }
                 else if (distance < shortestDistance && zone.IsOccupied && zone.Bucket.canBeSelected)
                 {
@@ -79,33 +76,36 @@ public class DragAndDrop : Sprite
                         //Swap old bucket to the old dropzone
                         if(dropzone != null)
                         {
-                            zone.Bucket.dropzone = dropzone;
-                            dropzone.Select(zone.Bucket);
-                            //Check if the bucket is at the correct spot
-                            if(dropzone.DropZoneColor == zone.Bucket.BucketColor)
-                            {
-                                //Prevent it from being selected again.
-                                zone.Bucket.canBeSelected = false;
-                            }
-                        }  else {
+                            dropzone.Select(zone.Bucket);                            
+                            //Check if the swapped bucket is now at the correct spot
+                            CheckIfCorrectLocation(zone.Bucket, dropzone.DropZoneColor);
+                        }
+                        //Or back to its original position
+                        else 
+                        {
                             zone.Bucket.dropzone = null;
                         }
 
                         //Move current bucket to the desire dropzone
-                        dropzone = zone;
                         zone.Select(this);
                         shortestDistance = distance;
+
                         //Check if the bucket is at the correct spot
-                        if(zone.DropZoneColor == BucketColor)
-                        {
-                            //Prevent it from being selected again.
-                            canBeSelected = false;
-                        }
+                        CheckIfCorrectLocation(this, zone.DropZoneColor);
                     }
                 }
             }
             selected = false;
         }
 
+    }
+//-----------------------------------------------------------------------------
+    private void CheckIfCorrectLocation(Bucket bucket, string dropzoneColor)
+    {
+        if(bucket.BucketColor == dropzoneColor)
+        {
+            bucket.canBeSelected = false;
+            EmitSignal(nameof(CorrectSpot));
+        }
     }
 }
