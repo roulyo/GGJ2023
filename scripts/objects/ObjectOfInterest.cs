@@ -6,9 +6,10 @@ public class ObjectOfInterest : Node2D
     public delegate void ObjectBusy();
     [Signal]
     public delegate void ObjectAvailable();
-
+    [Signal]
+    public delegate void MiniGameWon();
     private static bool IsFeatureOpen = false;
-
+    private Godot.Collections.Array clue;
 
 //-----------------------------------------------------------------------------
     public override void _Ready()
@@ -18,9 +19,11 @@ public class ObjectOfInterest : Node2D
 
         var feature = GetNode<ObjectOfInterestFeature>("Feature");
         feature.Connect(nameof(ObjectOfInterestFeature.CloseFeatureRequest), this, nameof(CloseFeature));
+        feature.Connect(nameof(ObjectOfInterestFeature.UpdateCluesRequest), this, nameof(UpdateClues), clue);
 
         Connect(nameof(ObjectBusy), GetParent(), nameof(Room.OnOOIObjectBusy));
         Connect(nameof(ObjectAvailable), GetParent(), nameof(Room.OnOOIObjectAvailable));
+        Connect(nameof(MiniGameWon), GetParent(), nameof(Room.OnMiniGameWon));
     }
 
 //-----------------------------------------------------------------------------
@@ -71,10 +74,14 @@ public class ObjectOfInterest : Node2D
 //-----------------------------------------------------------------------------
     public void CloseFeature()
     {
-        //TODO: Be sure to reset the game or not if keeping clue
         IsFeatureOpen = false;
         GetNode<ObjectOfInterestFeature>("Feature").CloseFeature();
         (GetNode<Sprite>("Sprite").Material as ShaderMaterial).SetShaderParam("width", 0.00);
         EmitSignal(nameof(ObjectAvailable));
+    }
+//-----------------------------------------------------------------------------
+    public void UpdateClues(string clue)
+    {
+        EmitSignal(nameof(MiniGameWon), clue);
     }
 }

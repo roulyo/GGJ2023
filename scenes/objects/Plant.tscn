@@ -13,3 +13,4 @@ texture = ExtResource( 1 )
 
 [node name="Feature" parent="." index="1"]
 Feature = ExtResource( 3 )
+Clue = "This is the plant clue."

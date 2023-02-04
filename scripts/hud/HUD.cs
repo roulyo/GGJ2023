@@ -53,4 +53,10 @@ public class HUD : CanvasLayer
     {
         SetMoveButtonEnabled(true);
     }
+//-----------------------------------------------------------------------------
+    private void OnMiniGameWon(string clue)
+    {
+        GetNode<Label>("Control/PopupPanel/Clues").Text += clue;
+        GetNode<Label>("Control/PopupPanel/Clues").Text += "\n";
+    }
 }
