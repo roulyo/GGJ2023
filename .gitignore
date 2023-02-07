@@ -12,3 +12,6 @@ data_*/
 
 # Vscode-specific ignores
 .vscode/
+
+# gimp
+*.xcf

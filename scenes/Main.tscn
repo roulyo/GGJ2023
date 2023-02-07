@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/rooms/Room_Right.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.cs" type="Script" id=2]
 [ext_resource path="res://scenes/rooms/Room_Left.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/rooms/RoomSouth.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/rooms/RoomWest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/rooms/RoomEast.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/rooms/RoomNorth.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -15,6 +19,18 @@ visible = false
 visible = false
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="RoomEast" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="RoomNorth" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="RoomSouth" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="RoomWest" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [connection signal="MiniGameEnded" from="Room_Right" to="HUD" method="OnMiniGameEnded"]
 [connection signal="MiniGameStarted" from="Room_Right" to="HUD" method="OnMiniGameStarted"]
