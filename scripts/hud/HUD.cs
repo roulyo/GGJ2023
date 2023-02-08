@@ -73,7 +73,8 @@ public class HUD : CanvasLayer
 //-----------------------------------------------------------------------------
     public void OnStartScreenButtonPressed()
     {
-        GetTree().ChangeScene("res://scenes/StartScene.tscn");
+        GetTree().Paused = false;
+        GetNode<SceneChanger>("/root/SceneChanger").ChangeScene("res://scenes/StartScene.tscn", "fade");
     }
 //-----------------------------------------------------------------------------
     public void OnQuitGameButtonPressed()
